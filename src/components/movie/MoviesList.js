@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Movieslist(movie, index) {
+function MoviesList({movie, index}) {
     return (
     <section>
       <ul 
@@ -11,16 +11,17 @@ function Movieslist(movie, index) {
         className='flex slide-up-fade-in justify-content-between'
         style={{borderBottom: '2px solid var(--primary-color)'}}
       >
-        {movie.movieName}
+        
         <div className='layout-column w-40'>
           {/* use this header for movie name */}
-          <h3 className='my-3'></h3>
+          <h3 className='my-3'>{movie.name}</h3>
           {/* use this paragraph for movie ratings, for example: 'Ratings: 88/100' */}
-          <p className='my-0'></p>
+          <p className='my-0'>{movie.ratings}</p>
+
         </div>
         <div className='layout-row my-auto mr-20'>
           {/* use this paragraph for movie duration, for example: '2.5 Hrs' */}
-          <p className='justify-content-end'></p>
+          <p className='justify-content-end'>{movie.duration}</p>
         </div>
       </li>
       </ul>
@@ -28,4 +29,4 @@ function Movieslist(movie, index) {
   )
 }
 
-export default Movieslist;
+export default MoviesList;

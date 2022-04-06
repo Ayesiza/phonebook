@@ -8,24 +8,24 @@ const title = 'Favorite Movie Directory'
 const Movies = () => {
     const [movies, setMovies] = useState([
         {
-          movieName: "JonHurry",
+          name: "JonHurry",
           Ratings: 10,
           Duration:"2hrs"
     
         },
         {
-          movieName: "Prison Break",
+          name: "Prison Break",
           Ratings: 10,
           Duration:"2:30hrs"
         },
         {
-          movieName: "live or Die",
+          name: "live or Die",
           Ratings: 10,
           Duration:"1hrs"
         }
       ]);
-      const addMovies = movieName => {
-        const newMovies =[...movies, {movieName}];
+      const addMovies = name => {
+        const newMovies =[...movies, {name}];
         setMovies(newMovies)
       }
   return (
@@ -39,10 +39,11 @@ const Movies = () => {
         <Search />
         {movies.map((movie, index) =>(
        <Movieslist 
-       key={index}
-       index={index}
+       key={movie.name}
        movie={movie}
        /> 
+
+       
         ))}
        
         <div data-testid='noResult'>
