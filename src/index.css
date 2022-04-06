@@ -1,3 +1,4 @@
+@import '../node_modules/h8k-design/dist/index.css';
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +11,54 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.App{
+background: rgb(255,255,255);
+background: linear-gradient(179deg, rgba(255,255,255,1) 0%, #028FFC 64%, rgba(18,103,255,1) 97%);
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.form1{
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  width: 30%;
+}
+.inputDiv{
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+input{
+  margin: 5px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  padding: 15px;
+}
+button{
+  margin: 5px;
+  width: 50px;
+  border-radius: 5px;
+  border: none;
+ padding: 10px;
+  font-size: 20px;
+}
+.buttons{
+  display: flex;
+  justify-content: center;
+}
+.Results{
+ text-align: center;
+  height: 10px;
+  width: 20%;
+  
+}
+.resultDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
