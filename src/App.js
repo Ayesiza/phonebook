@@ -13,6 +13,8 @@ function App() {
     <div>
       <Movies />
       <Calculator/>
+      
+
     </div>
   )
 }

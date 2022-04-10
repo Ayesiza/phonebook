@@ -43,7 +43,7 @@ const Calculator = () => {
         <button onClick={() => substract(firstVal,secondVal)}>-</button>
         </div>
         <div className='resultDiv'>
-        <input  className='Results'  value={inputValue }/>
+        <input  className='Results' defaultValue={inputValue }/>
         </div>
         </div>
         

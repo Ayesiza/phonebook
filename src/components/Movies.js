@@ -1,58 +1,70 @@
-import React, { useState } from 'react'
-import Movieform from './movie/Movieform';
-import 'h8k-components'
-import Search from './movie/Search';
-import Movieslist from './movie/MoviesList';
-const title = 'Favorite Movie Directory'
+import React, { useState } from "react";
+import Search from "./movie/Search";
+import { v4 as uuidv4 } from "uuid";
+import MoviesList from "./movie/MoviesList";
+import Movieform from "./movie/Movieform";
+const title = "Favorite Movie Directory";
 
 const Movies = () => {
-    const [movies, setMovies] = useState([
-        {
-          name: "JonHurry",
-          Ratings: 10,
-          Duration:"2hrs"
-    
-        },
-        {
-          name: "Prison Break",
-          Ratings: 10,
-          Duration:"2:30hrs"
-        },
-        {
-          name: "live or Die",
-          Ratings: 10,
-          Duration:"1hrs"
-        }
-      ]);
-      const addMovies = name => {
-        const newMovies =[...movies, {name}];
-        setMovies(newMovies)
-      }
+  const [movies, setMovies] = useState([
+    { name: "Prison Break", ratings: 20, duration: "2hrs" },
+    { name: "Salt", ratings: 10, duration: "1hrs" },
+    { name: "Live or Die", ratings: 30, duration: "3hrs" },
+  ]);
+  const [name, setName] = useState("");
+  const [ratings, setRatings] = useState("");
+  const [duration, setDuration] = useState("");
+  const [query, setQuery] = useState();
+
+  const addMovies = () => {
+    const newList = movies.concat({ name, ratings, duration, id: uuidv4() });
+    setMovies(newList);
+    setName("");
+    setRatings("");
+    setDuration("");
+  };
+
+  const searchMovies = () => {
+    const filterData = movies.filter((item) => {
+      return item.name.toLowerCase().includes(query.toLowerCase());
+    });
+    console.log(filterData);
+  };
+  
+  
   return (
-    <div> 
-        <h8k-navbar header={ title } />
-    <div className='layout-row justify-content-center mt-100'>
-      <div className='w-30 mr-75'>
-        <Movieform  addMovies={addMovies}/>
-      </div>
-      <div className='layout-column w-30'>
-        <Search />
-        {movies.map((movie, index) =>(
-       <Movieslist 
-       key={movie.name}
-       movie={movie}
-       /> 
-
-       
-        ))}
-       
-        <div data-testid='noResult'>
-          <h3 className='text-center'>No Results Found</h3>
+    <div>
+      <h1>{title}</h1>
+      <div className="layout-row justify-content-center mt-100">
+        <div className="w-30 mr-75">
+          <Movieform
+            name={name}
+            duration={duration}
+            ratings={ratings}
+            addMovies={addMovies}
+            setName={setName}
+            setRatings={setRatings}
+            setDuration={setDuration}
+          />
         </div>
-      </div>
-    </div> 
-    </div>
-  )
-}
+        <div className="layout-column w-30">
+          {/* search component */}
+          <Search
+            setQuery={setQuery}
+            query={query}
+            searchMovies={searchMovies}
+          />
+          {/* search component ends here */}
+          <MoviesList movies={movies} />
 
-export default Movies
+          <div data-testid="noResult">
+              {query? query : <h3 className="text-center">No Results Found</h3> }
+           
+          </div>
+        </div >
+      </div>
+    </div>
+  );
+};
+
+export default Movies;
