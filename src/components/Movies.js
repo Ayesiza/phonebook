@@ -14,7 +14,7 @@ const Movies = () => {
   const [name, setName] = useState("");
   const [ratings, setRatings] = useState("");
   const [duration, setDuration] = useState("");
-  const [query, setQuery] = useState();
+  const [query, setQuery] = useState("");
 
   const addMovies = () => {
     const newList = movies.concat({ name, ratings, duration, id: uuidv4() });
@@ -24,12 +24,12 @@ const Movies = () => {
     setDuration("");
   };
 
-  const searchMovies = () => {
-    const filterData = movies.filter((item) => {
-      return item.name.toLowerCase().includes(query.toLowerCase());
-    });
-    console.log(filterData);
-  };
+  // const searchMovies = () => {
+  //   const filterData = movies.filter((item) => {
+  //     return item.name.toLowerCase().includes(query.toLowerCase());
+  //   });
+  //   console.log(filterData);
+  // };
   
   
   return (
@@ -52,13 +52,16 @@ const Movies = () => {
           <Search
             setQuery={setQuery}
             query={query}
-            searchMovies={searchMovies}
+           
           />
           {/* search component ends here */}
-          <MoviesList movies={movies} />
+          <MoviesList
+           movies={movies} 
+           query={query}
+          />
 
           <div data-testid="noResult">
-              {query? query : <h3 className="text-center">No Results Found</h3> }
+              { query ===""? <h3 className="text-center">No Results Found</h3>:'' }
            
           </div>
         </div >

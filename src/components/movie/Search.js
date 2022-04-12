@@ -1,7 +1,7 @@
 import React from 'react'
 //import MoviesList from './MoviesList'
 
-function Search({query, setQuery, searchMovies}) {
+function Search({query, setQuery}) {
 
   
 
@@ -16,7 +16,7 @@ function Search({query, setQuery, searchMovies}) {
       onChange={(e) => setQuery(e.target.value)}
       
     />
-    <button  onClick={searchMovies}>search</button>
+    
       </section>
   )
 }

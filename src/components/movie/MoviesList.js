@@ -1,10 +1,20 @@
 import React from 'react'
 
-function MoviesList({movies }) {
+function MoviesList({movies, query }) {
     return (
     <section>
         <ul className="styled w-100 pl-0" data-testid="moviesList">
-            {movies.map((movie) => (
+            {movies
+            .filter((movie) => {
+              if (query ==="") {
+                return movie;
+              }else if (
+                movie.name.toLowerCase().includes(query.toLowerCase())
+              ){
+                return movie;
+              }
+            })
+            .map((movie) => (
               <li
                 key={movie.id}
                 className="flex slide-up-fade-in justify-content-between"
